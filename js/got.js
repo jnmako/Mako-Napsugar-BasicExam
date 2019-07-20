@@ -16,9 +16,30 @@ const character = {
 
   jsonData(gotCharacters) {
     this.characters = JSON.parse(gotCharacters);
-    console.log(this.characters);
+    this.showAll();
   },
 
-};
+  showAll() {
+    let input = '';
+    for (let i = 0; i < this.characters.length; i += 1) {
+      if (this.characters[i].dead !== true) {
+        input += this.addInput(this.characters[i]);
+      }
+    }
+    document.querySelector('.container-1').innerHTML += input;
+
+  },
+
+  addInput(ppl) {
+    return `
+    <div>  
+        <div>
+            <img src="${ppl.portrait}" alt="${ppl.name}">
+            <p>${ppl.name}</p>
+        </div>
+    </div>
+    `;
+  },
+}
 
 character.init();
