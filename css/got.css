@@ -5,10 +5,11 @@ body {
 
 .container-1 {
     background-size: cover;
-    background: url(/assets/site/mapblue.jpg);
-    margin: 0;
-    width: 70%;
+    background: url(/Mako-Napsugar_BasicExam/assets/site/mapblue.jpg);
     height: 100%;
+    margin: 0;
+    padding: 10px;
+    width: 70%;
 }
 
 .container-2 {

@@ -1,25 +1,24 @@
-function (findAll) {
+const character = {
 
-  var userDatas;
+  characters: [],
+  init() {
+    this.findAll();
+  },
 
-  function getData(url, callbackFunc) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function getCharacters() {
-      if (this.readyState === 4 && this.status === 200) {
-        callbackFunc(this);
-      }
+  findAll() {
+    const request = new XMLHttpRequest();
+    request.onload = () => {
+      this.jsonData(request.responseText);
     };
-    xhttp.open('GET', url, true);
-    xhttp.send();
-  }
+    request.open('GET', '/Mako-Napsugar_BasicExam/json/got.json');
+    request.send();
+  },
 
-  function successAjax(xhttp) {
-    userDatas = JSON.parse(xhttp.responseText);
-  }
+  jsonData(gotCharacters) {
+    this.characters = JSON.parse(gotCharacters);
+    console.log(this.characters);
+  },
 
-  getData('/json/got.json', successAjax);
-}
-findAll();
+};
 
-// Live servert használd mindig!!!!!
-/* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+character.init();
