@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    margin: 0px;
+}
+
+.container-1 {
+    background-size: cover;
+    background: url(/assets/site/mapblue.jpg);
+    margin: 0;
+    width: 70%;
+    height: 100%;
+}
+
+.container-2 {
+    background: #aaa;
+    text-align: center;
+    width: 30%;
+}
+
+
+#gotFont {
+    font-family: gotFont; 
+    src: url(/fonts/Game\ of\ Thrones.ttf);
+}
