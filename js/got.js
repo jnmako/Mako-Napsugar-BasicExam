@@ -19,8 +19,23 @@ const character = {
     this.showAll();
   },
 
+  nameSorting() {
+    this.characters.sort((a, b) => {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  },
+
   showAll() {
     let input = '';
+    this.nameSorting();
     for (let i = 0; i < this.characters.length; i += 1) {
       if (this.characters[i].dead !== true) {
         input += this.addInput(this.characters[i]);
