@@ -3,23 +3,55 @@ body {
     margin: 0px;
 }
 
+div {
+    border: 2px solid red;
+    width: fit-content;
+}
 .container-1 {
     background-size: cover;
     background: url(/Mako-Napsugar_BasicExam/assets/site/mapblue.jpg);
+    float: left;
     height: 100%;
-    margin: 0;
+    margin: auto;
     padding: 10px;
-    width: 70%;
+    position: relative;
+    text-align: center;
+    width: 80%;
 }
 
 .container-2 {
-    background: #aaa;
+    background: #555;
+    position: relative;
     text-align: center;
-    width: 30%;
+    width: 20%;
+}
+
+.characters {
+    float: left;
+    font-size: 13px;
+    margin: 10px;
+    width: 10%;
+}
+
+.search-bar {
+    position: relative;
+    top: 30%;
+   margin: auto;
 }
 
 
-#gotFont {
-    font-family: gotFont; 
-    src: url(/fonts/Game\ of\ Thrones.ttf);
-}
+ @font-face {
+    font-family: got;
+    src: url(/Mako-Napsugar_BasicExam/fonts/got.ttf);
+}   
+
+ #gotFont {
+     padding: 20px;
+     font-family: got;
+     font-size: 18px;
+     color: #fff;
+     
+ }
+
+ 
+

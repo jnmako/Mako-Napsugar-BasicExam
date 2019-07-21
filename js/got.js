@@ -27,19 +27,16 @@ const character = {
       }
     }
     document.querySelector('.container-1').innerHTML += input;
-
   },
 
   addInput(ppl) {
-    return `
-    <div>  
-        <div>
-            <img src="${ppl.portrait}" alt="${ppl.name}">
-            <p>${ppl.name}</p>
+    return ` 
+         <div class="characters">
+            <img src="${ppl.portrait}" alt="${ppl.name}" >
+            <p>${ppl.name.toUpperCase()}</p>
         </div>
-    </div>
     `;
   },
-}
+};
 
 character.init();
