@@ -21,8 +21,8 @@ const character = {
 
   nameSorting() {
     this.characters.sort((a, b) => {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
@@ -46,12 +46,28 @@ const character = {
 
   addInput(ppl) {
     return ` 
-         <div class="characters">
+         <div class="characters ${ppl.name}">
             <img src="${ppl.portrait}" alt="${ppl.name}" >
             <p>${ppl.name.toUpperCase()}</p>
         </div>
     `;
   },
+
+  searchUser(ppl) {
+    let searchedFor = document.getElementById('searchBar').value;
+    searchedFor = searchedFor.toLowerCase;
+    let inputField = document.getElementById('searchInput').innerHTML;
+    for (let i = 0; i < this.characters.length; i += 1) {
+      if (this.characters[i].name.toLowerCase().includes(searchedFor)) {
+
+        inputField += `<div> <img src="${ppl.picture}"> </div> 
+                    <p>${ppl.name}"</p>
+                    <div> <img src="${ppl.picture}"</div>
+                    <textarea id="" cols="30" rows="10" value = "${ppl.bio}"></textarea> `;
+      }
+    };
+  },
+
 };
 
 character.init();
