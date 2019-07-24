@@ -1,65 +1,117 @@
 body {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-around;
-    margin: 0px;
+  margin: 0;
 }
- @media (min-width: 800px) {
-    float: left;
-    width: 60%;
-  }
 
-
-div {
-    border: 2px solid red;
-    
-}
 .container-1 {
-    display: flex;
-    flex-wrap: wrap;
-    background-size: cover;
-    background: url(/Mako-Napsugar_BasicExam/assets/site/mapblue.jpg);
-    padding: 10px;
-    text-align: center;
-    width: 80%;
+  background-image: url(/assets/site/mapblue.jpg);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-around;
+  width: 80vw;
 }
+
 
 .container-2 {
-    background: #555;
-    position: relative;
+  background: #555;
+  position: relative;
+  text-align: center;
+  width: 20vw;
+}
+
+
+.mainTable {
+  display: flex;
+}
+
+
+
+.mainGot-font {
+    color: cornsilk;
+    font-family: got, serif;
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
-    width: 20%;
 }
 
-.characters {
-    display: table-cell;
-    float: left;
-    font-size: 12px;
-width: 10%;
-    margin: 10px;
-    
-    word-wrap: break-word;
-
-}
-
-.search-bar {
-    margin: auto;
-    position: relative;
-    top: 30%;
-}
-
-
- @font-face {
-    font-family: got;
-    src: url(/Mako-Napsugar_BasicExam/fonts/got.ttf);
+@font-face {
+  font-family: got;
+  src: url(/fonts/got.ttf);
 }   
 
- #gotFont {
-     padding: 20px;
-     font-family: got;
-     font-size: 18px;
-     color: #fff;
- }
+#gotFont {
+   padding: 20px;
+   font-family: got;
+   font-size: 18px;
+   color: #fff;
+}
+.personsPhoto {
+    justify-content: space-around;
+    margin: 10px;
+    border-radius: 50%;
+    cursor:pointer;
+}
 
- 
 
+.persons {
+    text-align: center;
+    flex: 0 0 12.5%;
+    margin-bottom: 14px;
+}
+
+
+body {
+    margin: 0;
+}
+
+.personsDetailName {
+    color: cornsilk;
+    font-weight: bold;
+    font-size: 24px;
+    padding-top: 10px;
+}
+
+
+.personsHousePhoto {
+    text-align: right;
+}
+
+.bio {
+    color: cornsilk;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.details {
+    flex-grow: 1;
+}
+
+.search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#search {
+    height: 30px;
+    width: 200px;
+    margin: 20px;
+    margin-left: 100px;
+    border-radius: 5px;
+}
+
+#button {
+    height: 35px;
+    width: 30px;
+    margin: 20px;
+    margin-left: 50px;
+    margin-bottom: -55px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.personsDetailPhoto {
+    border: 2px solid cornsilk;
+    border-radius: 5px;
+    max-width: 350px;
+}

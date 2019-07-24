@@ -1,73 +1,78 @@
-const character = {
-
-  characters: [],
+const characters = {
+  data: [],
   init() {
     this.findAll();
   },
 
   findAll() {
     const request = new XMLHttpRequest();
-    request.onload = () => {
-      this.jsonData(request.responseText);
+    request.onreadystatechange = () => {
+      if (request.readyState === 4 && request.status === 200) {
+        this.setData(request.responseText);
+      }
     };
-    request.open('GET', '/Mako-Napsugar_BasicExam/json/got.json');
+    request.open('GET', '/json/got.json');
     request.send();
   },
 
-  jsonData(gotCharacters) {
-    this.characters = JSON.parse(gotCharacters);
+  setData(userData) {
+    this.data = JSON.parse(userData);
+    this.data = Array.from(this.data.filter(aliveCharacters => aliveCharacters.dead !== true)
+      .sort((x, y) => {
+        if (x.name === y.name) {
+          return 0;
+        }
+        if (x.name > y.name) {
+          return 1;
+        }
+        return -1;
+      }));
     this.showAll();
   },
 
-  nameSorting() {
-    this.characters.sort((a, b) => {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+  showAll() {
+    let gotTemp = '';
+    this.data.forEach((item, i) => {
+      gotTemp += `<div class="persons">
+                    <img class="personsPhoto" src="/${item.portrait}" 
+                        onclick="characters.showCharacterData(${i})" alt="${item.name}">
+                    <div class="personsName" 
+                       onclick="characters.showCharacterData(${i})" >${item.name}</div>
+                    </div> `;
+      document.querySelector('.container-1').innerHTML = gotTemp;
     });
   },
 
-  showAll() {
-    let input = '';
-    this.nameSorting();
-    for (let i = 0; i < this.characters.length; i += 1) {
-      if (this.characters[i].dead !== true) {
-        input += this.addInput(this.characters[i]);
+  showCharacterData(i) {
+    let characterDetails = '';
+    characterDetails += `<div class = "personDetails">
+      <img class="personsDetailPhoto" src="/${this.data[i].picture}">
+      <div display: inline-block>
+      <div class = "personsDetailName" >${this.data[i].name} </div>`;
+
+    if (this.data[i].house != null) {
+      characterDetails += ` <img class="personsHousePhoto" src="/assets/houses/${this.data[i].house}.png"></div>`;
+    }
+    characterDetails += `<div class="bio" >${this.data[i].bio}</div>
+        </div>`;
+    document.querySelector('.details').innerHTML = characterDetails;
+  },
+
+
+  search() {
+    const searchBox = document.querySelector('#search');
+    let characterIndex = '';
+    for (let index = 0; index < this.data.length; index += 1) {
+      const element = this.data[index];
+      if (element.name.toLowerCase() === searchBox.value.toLowerCase()) {
+        characterIndex = index;
       }
     }
-    document.querySelector('.container-1').innerHTML += input;
+    if (characterIndex === '') {
+      alert('Character not found :(');
+    } else {
+      this.showCharacterData(parseInt(characterIndex, 10));
+    }
   },
-
-  addInput(ppl) {
-    return ` 
-         <div class="characters ${ppl.name}">
-            <img src="${ppl.portrait}" alt="${ppl.name}" >
-            <p>${ppl.name.toUpperCase()}</p>
-        </div>
-    `;
-  },
-
-  searchUser(ppl) {
-    let searchedFor = document.getElementById('searchBar').value;
-    searchedFor = searchedFor.toLowerCase;
-    let inputField = document.getElementById('searchInput').innerHTML;
-    for (let i = 0; i < this.characters.length; i += 1) {
-      if (this.characters[i].name.toLowerCase().includes(searchedFor)) {
-
-        inputField += `<div> <img src="${ppl.picture}"> </div> 
-                    <p>${ppl.name}"</p>
-                    <div> <img src="${ppl.picture}"</div>
-                    <textarea id="" cols="30" rows="10" value = "${ppl.bio}"></textarea> `;
-      }
-    };
-  },
-
 };
-
-character.init();
+characters.init();

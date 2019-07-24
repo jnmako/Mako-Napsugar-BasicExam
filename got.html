@@ -5,26 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/Mako-Napsugar_BasicExam/css/got.css">
+    <title>GOT Basic Exam</title>
+    <link rel="stylesheet" href="/css/got.css">
 </head>
 
 <body>
-    <div class="container-1">
+    <div class="mainTable">
+        <div class="container-1">
 
-    </div>
-    <div class="container-2">
-        <h1 id="gotFont">Game of thrones</h1>
-
-        <div class="search-bar">
-            <div id="searchInput"></div>
-            <button class="button button--search" onclick="searchUser()">&#xbb;</button>
-            <input type="text" name="searchBar" id="searchBar" placeholder="Search a character">
         </div>
+        <div class="container-2">
+            <div class="mainGot-font">
+                <p>GAME OF THRONES</p>
+            </div>
+            <div class="details"></div>
 
 
+            <div class="search"></div>
+
+            <input type="button" id="searchButton" value="&gt;" onclick="GotCharacters.search()">
+            <input id="search" type="text" placeholder="Character name">
+
+        </div>
     </div>
-    <script src="/Mako-Napsugar_BasicExam/js/got.js"></script>
+
+    <script src="/js/got.js"></script>
 </body>
 
 </html>
